@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'root/index'
   resources :root, only: [:index]
+  resources :town, only: [:index]
 
   root to: 'root#index'
 end
