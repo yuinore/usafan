@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to root_url
     else
-      render 'new'
+      render "new"
     end
   end
 
