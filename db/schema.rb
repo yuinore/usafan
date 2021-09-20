@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_19_093807) do
+ActiveRecord::Schema.define(version: 2021_09_20_143431) do
+
+  create_table "user_coins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "amount", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_coins_on_user_id", unique: true
+  end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -20,4 +28,5 @@ ActiveRecord::Schema.define(version: 2021_09_19_093807) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "user_coins", "users"
 end
