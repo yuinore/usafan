@@ -5,8 +5,15 @@ class TownController < ApplicationController
   end
 
   def create
-    @user_coin.amount += 10
-    @user_coin.save!
+    # TODO: player lock
+
+    if current_user_identity.stamina >= 5
+      current_user_identity.stamina -= 5
+      current_user_identity.save!
+
+      @user_coin.amount += 10
+      @user_coin.save!
+    end
 
     redirect_to town_index_path
   end

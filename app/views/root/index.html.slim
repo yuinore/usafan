@@ -3,9 +3,10 @@ p
 
 p
   = "#{logged_in?}, #{current_user&.name}"
+  br
+  = "stamina: #{current_user_identity.stamina}, #{current_user_identity.stamina_updated_at}"
 
 p
   = link_to "Town", town_index_path
-
-p
+  br
   = link_to "Logout", logout_path, method: :delete
