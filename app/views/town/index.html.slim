@@ -2,4 +2,10 @@ p
   | Town
 
 p
+  = "coin: #{@user_coin.amount}"
+
+p
+  = link_to "Explore", town_index_path, method: :post
+
+p
   = link_to "Back", root_path

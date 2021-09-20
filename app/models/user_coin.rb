@@ -18,4 +18,8 @@
 #
 class UserCoin < ApplicationRecord
   belongs_to :user
+
+  def amount
+    self[:amount] || 0
+  end
 end
