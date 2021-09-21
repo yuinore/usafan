@@ -10,11 +10,17 @@ html
     = javascript_pack_tag 'application'
   body
     h1 うさぎファンタジア
-    / - if logged_in?
-    /   = "name: #{current_user.name}"
-    /  br
-    /  = "email: #{current_user.email}"
-    /  br
-    /  = "stamina: #{current_user_identity.stamina} (更新まで #{10 - (Time.current.to_i - current_user_identity.stamina_updated_at.to_i)} 秒)"
+    p.notice
+      = notice
+    p.alert
+      = alert
+    | (開発中のため、ユーザーデータを予告無く削除する場合があります。)
+    br
+    - if user_signed_in?
+      = "name: #{current_user.name}"
+      br
+      = "email: #{current_user.email}"
+      br
+      = "stamina: #{current_user_identity.stamina} (更新まで #{10 - (Time.current.to_i - current_user_identity.stamina_updated_at.to_i)} 秒)"
     hr
     = yield

@@ -1,4 +1,4 @@
-class TownController < ApplicationController
+class TownController < GameController
   before_action :set_user_coin
 
   def index
