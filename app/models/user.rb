@@ -31,7 +31,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable,
          # :registerable,
-         :recoverable, :rememberable, :validatable, :trackable, :omniauthable, omniauth_providers: %i(google)
+         :recoverable, :rememberable, :validatable, :trackable, :omniauthable, omniauth_providers: %i[google]
 
   has_one :user_coin, dependent: :destroy
   has_one :user_identity, dependent: :destroy
@@ -40,19 +40,17 @@ class User < ApplicationRecord
     super(stamina: 100, stamina_updated_at: Time.current)
   end
 
-  protected
-
-    def self.find_for_google(auth)
-      user = User.find_by(email: auth.info.email)
-      unless user
-        user = User.create(name:     auth.info.name,
-                          provider: auth.provider,
-                          uid:      auth.uid,
-                          token:    auth.credentials.token,
-                          email:    auth.info.email,
-                          password: Devise.friendly_token[0, 20],
-                          meta:     auth.to_yaml)
-      end
-      user
+  def self.find_for_google(auth)
+    user = User.find_by(email: auth.info.email)
+    unless user
+      user = User.create(name: auth.info.name,
+                         provider: auth.provider,
+                         uid: auth.uid,
+                         token: auth.credentials.token,
+                         email: auth.info.email,
+                         password: Devise.friendly_token[0, 20],
+                         meta: auth.to_yaml)
     end
+    user
+  end
 end

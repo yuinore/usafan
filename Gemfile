@@ -46,15 +46,15 @@ end
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "annotate"
+gem "devise"
+gem "devise-i18n"
+gem "devise-i18n-views"
+gem "dotenv-rails"
 gem "html2slim"
 gem "slim-rails"
-gem "devise"
-gem 'devise-i18n'
-gem 'devise-i18n-views'
-gem 'dotenv-rails'
 # gem 'omniauth'
+gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
-gem 'omniauth-google-oauth2'
 
 group :development do
   gem "onkcop"
