@@ -13,7 +13,7 @@ module SessionsHelper
   end
 
   def current_user_identity
-    @current_user_identity ||= current_user && UserIdentity.find_by(user_id: current_user.id)
+    @current_user_identity ||= current_user&.user_identity
   end
 
   # 受け取ったユーザーがログイン中のユーザーと一致すればtrueを返す

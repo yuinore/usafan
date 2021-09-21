@@ -11,4 +11,7 @@
 #
 class User < ApplicationRecord
   has_secure_password
+
+  has_one :user_coin, dependent: :destroy
+  has_one :user_identity, dependent: :destroy
 end

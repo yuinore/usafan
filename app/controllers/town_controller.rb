@@ -21,6 +21,6 @@ class TownController < ApplicationController
   private
 
     def set_user_coin
-      @user_coin = UserCoin.find_or_initialize_by(user_id: current_user.id)
+      @user_coin = current_user.user_coin || current_user.build_user_coin
     end
 end
