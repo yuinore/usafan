@@ -8,3 +8,5 @@
 
 # user = User.create!(name: "hato", email: "hato@example.com", password: "password", password_confirmation: "password")
 # UserIdentity.create!(user_id: user.id, stamina: 0, stamina_updated_at: Time.current)
+
+Card.create!(name: "チノ", graffiti_id: 1)

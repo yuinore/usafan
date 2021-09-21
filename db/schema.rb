@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_21_151937) do
+ActiveRecord::Schema.define(version: 2021_09_21_195058) do
+
+  create_table "cards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "graffiti_id"
+    t.text "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_cards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "card_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["card_id"], name: "index_user_cards_on_card_id"
+    t.index ["user_id", "card_id"], name: "index_user_cards_on_user_id_and_card_id", unique: true
+    t.index ["user_id"], name: "index_user_cards_on_user_id"
+  end
 
   create_table "user_coins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -51,6 +68,8 @@ ActiveRecord::Schema.define(version: 2021_09_21_151937) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "user_cards", "cards"
+  add_foreign_key "user_cards", "users"
   add_foreign_key "user_coins", "users"
   add_foreign_key "user_identities", "users"
 end

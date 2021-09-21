@@ -36,6 +36,9 @@ class User < ApplicationRecord
   has_one :user_coin, dependent: :destroy
   has_one :user_identity, dependent: :destroy
 
+  has_many :user_cards, dependent: :destroy
+  has_many :cards, through: :user_cards
+
   def build_user_identity
     super(stamina: 100, stamina_updated_at: Time.current)
   end
