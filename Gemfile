@@ -50,6 +50,8 @@ gem "bcrypt", "3.1.12"
 gem "html2slim"
 gem "slim-rails"
 gem "devise"
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 group :development do
   gem "onkcop"
