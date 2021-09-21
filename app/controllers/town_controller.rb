@@ -13,6 +13,8 @@ class TownController < GameController
 
       @user_coin.amount += 10
       @user_coin.save!
+    else
+      flash[:alert] = "スタミナが不足しています。"
     end
 
     redirect_to town_index_path
