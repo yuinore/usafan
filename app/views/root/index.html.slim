@@ -2,11 +2,6 @@ p
   | Hello World!
 
 p
-  = "#{logged_in?}, #{current_user&.name}"
+  = link_to "街へ行く", town_index_path
   br
-  = "stamina: #{current_user_identity.stamina}, #{current_user_identity.stamina_updated_at}"
-
-p
-  = link_to "Town", town_index_path
-  br
-  = link_to "Logout", logout_path, method: :delete
+  = link_to "ログアウト", logout_path, method: :delete

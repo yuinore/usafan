@@ -1,11 +1,11 @@
 p
-  | Town
+  | 街
 
 p
   = "coin: #{@user_coin.amount}"
 
 p
-  = link_to "Explore (stamina 50)", town_index_path, method: :post
+  = link_to "探索する (スタミナ 50 消費)", town_index_path, method: :post
 
 p
   = link_to "Back", root_path
