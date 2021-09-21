@@ -3,5 +3,8 @@ p
 
 p
   = link_to "街へ行く", town_index_path
-  br
-  = link_to "ログアウト", logout_path, method: :delete
+
+- if user_signed_in?
+  = link_to "ログアウト", logout_path
+- else
+  = link_to 'Signin with Google', user_google_omniauth_authorize_path, method: :post
