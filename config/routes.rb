@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'shop/index'
   resources :root, only: [:index]
   resources :town, only: [:index, :create]
 

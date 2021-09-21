@@ -10,11 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_21_195058) do
+ActiveRecord::Schema.define(version: 2021_09_21_201835) do
 
   create_table "cards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "graffiti_id"
     t.text "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "trades", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "dst_entity_type", null: false
+    t.integer "dst_entity_id", null: false
+    t.integer "dst_amount", null: false
+    t.integer "src_1_entity_type", null: false
+    t.integer "src_1_entity_id", null: false
+    t.integer "src_1_amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
