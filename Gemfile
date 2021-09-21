@@ -49,6 +49,7 @@ gem "annotate"
 gem "bcrypt", "3.1.12"
 gem "html2slim"
 gem "slim-rails"
+gem "devise"
 
 group :development do
   gem "onkcop"
