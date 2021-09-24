@@ -1,8 +1,12 @@
 h2 商店街
 
 - @trades.each do |trade|
-  = "#{trade.dst_entity.inspect} に交換 ("
+  = link_to "#{trade.dst_entity.inspect}", shop_index_path(trade_id: trade.id), method: :post
+  = " に交換 ("
   - trade.src_entities.each do |entity|
     = "#{entity.inspect} "
   = "が必要)"
   br
+
+p
+  = link_to "Back", root_path

@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2021_09_21_201835) do
 
   create_table "cards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "graffiti_id"
-    t.text "name"
+    t.integer "graffiti_id", null: false
+    t.text "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

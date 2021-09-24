@@ -43,6 +43,31 @@ class User < ApplicationRecord
     super(stamina: 100, stamina_updated_at: Time.current)
   end
 
+  def add_entity(entity)
+    case entity.entity_type
+    when 1 then
+      user_coin.amount += entity.amount
+      user_coin.save!
+    when 3 then
+      user_card = user_cards.find_by(card_id: entity.entity_id)
+      raise StandardError unless user_card.nil?
+      user_cards.create!(card_id: entity.entity_id)
+    end
+  end
+
+  def remove_entity(entity)
+    case entity.entity_type
+    when 1 then
+      user_coin.amount -= entity.amount
+      raise StandardError if user_coin.amount < 0
+      user_coin.save!
+    when 3 then
+      user_card = user_cards.find_by(card_id: entity.entity_id)
+      raise StandardError if user_card.nil?
+      user_card.destroy
+    end
+  end
+
   def self.find_for_google(auth)
     user = User.find_by(email: auth.info.email)
     unless user

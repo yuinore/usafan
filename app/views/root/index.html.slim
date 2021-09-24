@@ -3,6 +3,7 @@ h2 ホーム
 p
   - if user_signed_in?
     = link_to "街へ行く", town_index_path
+    br
     = link_to "商店街へ行く", shop_index_path
     br
     = link_to "ログアウト", logout_path

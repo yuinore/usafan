@@ -9,6 +9,7 @@
 # user = User.create!(name: "hato", email: "hato@example.com", password: "password", password_confirmation: "password")
 # UserIdentity.create!(user_id: user.id, stamina: 0, stamina_updated_at: Time.current)
 
-Card.create!(name: "チノ", graffiti_id: 1)
+Card.create!(id: 1, name: "チノ", graffiti_id: 1)
 
-Trade.create(dst_entity_type: 3, dst_entity_id: 1, dst_amount: 1, src_1_entity_type: 1, src_1_entity_id: 1, src_1_amount: 100)
+Trade.create!(dst_entity_type: 3, dst_entity_id: 1, dst_amount: 1, src_1_entity_type: 1, src_1_entity_id: 1, src_1_amount: 100)
+Trade.create!(dst_entity_type: 1, dst_entity_id: 1, dst_amount: 100, src_1_entity_type: 3, src_1_entity_id: 1, src_1_amount: 1)

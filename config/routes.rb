@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'shop/index'
   resources :root, only: [:index]
   resources :town, only: [:index, :create]
+  resources :shop, only: [:index, :create]
 
   root to: "root#index"
 
