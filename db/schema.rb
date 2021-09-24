@@ -10,11 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_21_201835) do
+ActiveRecord::Schema.define(version: 2021_09_24_215544) do
 
   create_table "cards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "graffiti_id", null: false
     t.text "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -57,6 +63,17 @@ ActiveRecord::Schema.define(version: 2021_09_21_201835) do
     t.index ["user_id"], name: "index_user_identities_on_user_id", unique: true
   end
 
+  create_table "user_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.integer "amount", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_user_items_on_item_id"
+    t.index ["user_id", "item_id"], name: "index_user_items_on_user_id_and_item_id", unique: true
+    t.index ["user_id"], name: "index_user_items_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -83,4 +100,6 @@ ActiveRecord::Schema.define(version: 2021_09_21_201835) do
   add_foreign_key "user_cards", "users"
   add_foreign_key "user_coins", "users"
   add_foreign_key "user_identities", "users"
+  add_foreign_key "user_items", "items"
+  add_foreign_key "user_items", "users"
 end
